@@ -20,7 +20,8 @@ btnConnect.addEventListener('click', function(e) {
         e.preventDefault();
         var brokerAdress = document.getElementById('broker').value;
         console.log(brokerAdress);
-        client = mqtt.connect("wss://test.mosquitto.org:8081/mqtt");
+      //   client = mqtt.connect("wss://test.mosquitto.org:8081/mqtt");
+        client = mqtt.connect(brokerAdress);
         client.on("connect", function(){
           conRes.value= "Successfully connected";
           conRes.style.backgroundColor='rgb(0, 204, 0)';
