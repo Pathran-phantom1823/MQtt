@@ -3,10 +3,8 @@ var btnDisConnect = document.getElementById('disconnect');
 var btnPublish = document.getElementById('publish');
 var btnSubscribe = document.getElementById('subscribe');
 var btnUnSubscribe = document.getElementById('unsubscribe');
-// var result = document.getElementById('result');
 var conRes = document.getElementById('connectresult');
-// var topic= document.getElementById('topic').value
-// var payload = document.getElementById('payload').value;
+
 var topic;
 var payload;
 var timestamp = new Date()
@@ -15,12 +13,10 @@ var data;
 // basic functionalities
  
 alert("PLEASE CONNECT THE BROKER FIRST")
-// var client;// = mqtt.connect("ws://broker.hivemq.com:8000/mqtt");
 btnConnect.addEventListener('click', function(e) {
         e.preventDefault();
         var brokerAdress = document.getElementById('broker').value;
         console.log(brokerAdress);
-      //   client = mqtt.connect("wss://test.mosquitto.org:8081/mqtt");
         client = mqtt.connect(brokerAdress);
         client.on("connect", function(){
           conRes.value= "Successfully connected";
@@ -44,11 +40,6 @@ btnPublish.addEventListener('click',function(e){
             cell1.innerHTML = topic;
             cell2.innerHTML = payload;
             cell3.innerHTML = timestamp;
-      // data = "<tr><td>"+topic+"</td>"+
-      //       "<td>"+payload+"</td>"+
-      //       "<td>"+timestamp+"</td>"+
-      //     "</tr>"
-      //     $('table tbody').append(data);
       })
             client.publish(topic,payload)
 })
@@ -123,29 +114,3 @@ btnUnSubscribe.addEventListener('click',function(e) {
 
 
 
-// // advance functionalities
-// client = mqtt.connect("ws://broker.hivemq.com:8000/mqtt")
-// client.subscribe("mqtt/demo", function (err){
-//   if (err){
-//     console.log(err);
-//   } else {
-//     console.log("subscribed")
-//   }
-// })
-
-// client.on("connect", function(){
-//     console.log("Successfully connected");
-// })
-
-// client.on("message", function (topic, payload) {
-//   console.log([topic, payload].join(": "));
-//   client.end();
-// })
-
-// client.publish("mqtt/demo", "hello world!", function(err){
-//   if (err){
-//     console.log(err)
-//   } else {
-//     console.log("published")
-//   }
-// })
