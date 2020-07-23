@@ -4,7 +4,9 @@ var btnPublish = document.getElementById('publish');
 var btnSubscribe = document.getElementById('subscribe');
 var btnUnSubscribe = document.getElementById('unsubscribe');
 var conRes = document.getElementById('connectresult');
-var timestamp = new Date()
+var timestamp = new Date($.now());
+var today = new Date();
+var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
 var data;
 
 // basic functionalities
@@ -29,7 +31,7 @@ btnConnect.addEventListener('click', function (e) {
             var cell3 = row.insertCell(2);
             cell1.innerHTML = topic;
             cell2.innerHTML = payload;
-            cell3.innerHTML = timestamp;
+            cell3.innerHTML = time;
       })
 });
 
